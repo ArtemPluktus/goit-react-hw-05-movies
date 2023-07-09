@@ -1,5 +1,11 @@
 import { lazy } from 'react';
 import { Routes, Route } from 'react-router-dom';
+// import Layout from './Layout.jsx';
+// import Home from './Home.jsx';
+// import Movies from './Movies.jsx';
+// import MovieDetails from './MovieDetails.jsx';
+// import Cast from './Cast.jsx';
+// import Reviews from './Reviews.jsx';
 
 const Layout = lazy(() => import(`./Layout.jsx`));
 const Home = lazy(() => import(`./Home.jsx`));
