@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import css from './Styles.module.css';
 
 const Home = () => {
   const [Authorization] = useState(
@@ -30,13 +31,17 @@ const Home = () => {
 
   return (
     <div>
-      <h1>Trending today</h1>
-      <ul>
+      <h1 className={css.trendingTitle}>Trending today</h1>
+      <ul className={css.trendingList}>
         {trending &&
           trending.map(trend => {
             return (
-              <li key={trend.id}>
-                <Link key={trend.id} to={`/movies/${trend.id}`}>
+              <li key={trend.id} className={css.trendingItem}>
+                <Link
+                  key={trend.id}
+                  to={`/movies/${trend.id}`}
+                  className={css.movieLink}
+                >
                   {trend.original_title}
                 </Link>
               </li>

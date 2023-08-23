@@ -1,5 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import css from './Styles.module.css';
 
 const Reviews = () => {
   const { movie } = useParams();
@@ -34,13 +35,13 @@ const Reviews = () => {
     <div>
       {reviews.length > 0 ? (
         reviews.map(review => (
-          <li key={review.id}>
-            <h4>Author: {review.author}</h4>
-            <p>{review.content}</p>
-          </li>
+          <div key={review.id} className={css.reviewItem}>
+            <h4 className={css.author}>Author: {review.author}</h4>
+            <p className={css.content}>{review.content}</p>
+          </div>
         ))
       ) : (
-        <span>We don't have any reviews</span>
+        <span className={css.noReviews}>We don't have any reviews</span>
       )}
     </div>
   );

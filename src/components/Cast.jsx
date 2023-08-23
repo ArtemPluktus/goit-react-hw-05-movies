@@ -1,5 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import actorIcon from './actorIcon.png';
+import css from './Styles.module.css';
 
 const Cast = () => {
   const { movie } = useParams();
@@ -32,15 +34,21 @@ const Cast = () => {
 
   return (
     <div>
-      <ul>
+      <ul className={css.actorList}>
         {cast.map(actor => (
-          <li key={actor.id}>
-            <img
-              src={`https://image.tmdb.org/t/p/w500/${actor.profile_path}`}
-              alt=""
-            />
-            <span>{actor.name}</span>
-            <span>Character: {actor.character}</span>
+          <li key={actor.id} className={css.actorItem}>
+            {actor.profile_path ? (
+              <img
+                src={`https://image.tmdb.org/t/p/w500/${actor.profile_path}`}
+                alt=""
+                className={css.actorImage}
+              />
+            ) : (
+              <img src={actorIcon} alt="" className={css.actorImage} />
+            )}
+
+            <span className={css.actorName}>{actor.name}</span>
+            <span className={css.actorName}>Character: {actor.character}</span>
           </li>
         ))}
       </ul>

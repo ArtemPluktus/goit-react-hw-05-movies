@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useSearchParams, Link, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import css from './Styles.module.css';
 
 const Movies = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -49,13 +50,18 @@ const Movies = () => {
 
   return (
     <div>
-      <input type="text" value={movieId} onChange={updQuery} />
-      <button type="button" onClick={handleSearch}>
+      <input
+        type="text"
+        value={movieId}
+        onChange={updQuery}
+        className={css.searchInput}
+      />
+      <button type="button" onClick={handleSearch} className={css.searchButton}>
         Search
       </button>
-      <ul>
+      <ul className={css.movieList}>
         {movieList.map(movie => (
-          <li key={movie.id}>
+          <li key={movie.id} className={css.movieItem}>
             <Link to={`/movies/${movie.id}`} state={{ from: location }}>
               {movie.original_title}
             </Link>

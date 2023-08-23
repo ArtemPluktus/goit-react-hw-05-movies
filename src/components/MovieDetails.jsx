@@ -1,5 +1,6 @@
 import { useParams, useLocation, Link, Outlet } from 'react-router-dom';
 import { useState, useEffect, useRef } from 'react';
+import css from './Styles.module.css';
 
 const MovieDetails = () => {
   const location = useLocation();
@@ -36,25 +37,38 @@ const MovieDetails = () => {
 
   return (
     <div>
-      <Link to={backLink.current}>Go back</Link>
-      <img src={`https://image.tmdb.org/t/p/w500/${poster_path}`} alt="" />
-      <h2>{original_title}</h2>
-      <p>User Score: {Number(vote_average) * 10}%</p>
-      <h2>Overwiew</h2>
-      <p>{overview}</p>
-      <h2>Genres</h2>
-      {genres &&
-        genres.map(genre => {
-          return genre.name;
-        })}
-      <h3>Additional information</h3>
+      <Link to={backLink.current} className={css.backLink}>
+        Go back
+      </Link>
+      <img
+        src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
+        alt=""
+        className={css.moviePoster}
+      />
+      <h2 className={css.movieTitle}>{original_title}</h2>
+      <p className={css.userScore}>User Score: {Number(vote_average) * 10}%</p>
+      <h2 className={css.overviewTitle}>Overwiew</h2>
+      <p className={css.overview}>{overview}</p>
+      <h2 className={css.genresTitle}>Genres</h2>
+      <p className={css.genresList}>
+        {genres &&
+          genres.map(genre => {
+            return `${genre.name} `;
+          })}
+      </p>
 
-      <ul>
-        <li>
-          <Link to="cast">Cast</Link>
+      <h3 className={css.additionalInfoTitle}>Additional information</h3>
+
+      <ul className={css.additionalList}>
+        <li className={css.additionalLink}>
+          <Link to="cast" className={css.castLink}>
+            Cast
+          </Link>
         </li>
-        <li>
-          <Link to="reviews">Reviews</Link>
+        <li className={css.additionalLink}>
+          <Link to="reviews" className={css.reviewsLink}>
+            Reviews
+          </Link>
         </li>
       </ul>
       <Outlet />
