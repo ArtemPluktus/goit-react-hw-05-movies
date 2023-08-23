@@ -31,11 +31,11 @@ const Movies = () => {
   };
 
   const updQuery = e => {
+    setMovieId(e.currentTarget.value);
+
     if (e.currentTarget.value === '') {
       return setSearchParams({});
     }
-
-    setMovieId(e.currentTarget.value);
   };
 
   const handleSearch = () => {
