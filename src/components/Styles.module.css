@@ -148,10 +148,16 @@
 .actorList {
   list-style: none;
   padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .actorItem {
   margin-bottom: 1rem;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
 }
 
 .actorImage {

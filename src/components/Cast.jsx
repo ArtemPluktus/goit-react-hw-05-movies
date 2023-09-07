@@ -46,9 +46,12 @@ const Cast = () => {
             ) : (
               <img src={actorIcon} alt="" className={css.actorImage} />
             )}
-
-            <span className={css.actorName}>{actor.name}</span>
-            <span className={css.actorName}>Character: {actor.character}</span>
+            <div>
+              <span className={css.actorName}>{actor.name}</span> <br />
+              <span className={css.actorName}>
+                Character: {actor.character}
+              </span>
+            </div>
           </li>
         ))}
       </ul>

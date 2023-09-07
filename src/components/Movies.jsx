@@ -39,7 +39,8 @@ const Movies = () => {
     }
   };
 
-  const handleSearch = () => {
+  const handleSearch = e => {
+    e.preventDefault();
     setSearchParams({ query: movieId });
     searchMovie();
   };
@@ -50,15 +51,18 @@ const Movies = () => {
 
   return (
     <div>
-      <input
-        type="text"
-        value={movieId}
-        onChange={updQuery}
-        className={css.searchInput}
-      />
-      <button type="button" onClick={handleSearch} className={css.searchButton}>
-        Search
-      </button>
+      <form autoComplete="off" onSubmit={handleSearch}>
+        <input
+          type="text"
+          value={movieId}
+          onChange={updQuery}
+          className={css.searchInput}
+        />
+        <button type="button" className={css.searchButton}>
+          Search
+        </button>
+      </form>
+
       <ul className={css.movieList}>
         {movieList.map(movie => (
           <li key={movie.id} className={css.movieItem}>
