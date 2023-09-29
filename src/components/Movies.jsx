@@ -58,7 +58,11 @@ const Movies = () => {
           onChange={updQuery}
           className={css.searchInput}
         />
-        <button type="button" className={css.searchButton}>
+        <button
+          type="button"
+          className={css.searchButton}
+          onClick={handleSearch}
+        >
           Search
         </button>
       </form>
